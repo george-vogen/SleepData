@@ -45,5 +45,18 @@ if (resp == "1")
 else if (resp == "2")
 {
     // TODO: parse data file
+    StreamReader sr = new("data.txt");
+
+    while (!sr.EndOfStream)
+    {
+        string? line = sr.ReadLine();
+        string[] arr = String.IsNullOrEmpty(line) ? [] : line.Split('/', ',', '|');
+        Console.WriteLine("Week of {0:MMM}, {1:dd}, {2:yyyy}", arr[0], arr[1], arr[2]);
+
+        Console.WriteLine(" Su Mo Tu We Th Fr Sa");
+        Console.WriteLine(" -- -- -- -- -- -- --");
+        Console.WriteLine(" {0} {1} {2} {3} {4} {5} {6}\n", arr[3], arr[4], arr[5], arr[6], arr[7], arr[8], arr[9]);
+    }
+    sr.Close();
 
 }
